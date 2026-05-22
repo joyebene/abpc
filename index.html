@@ -6,8 +6,8 @@
     <title>ANDREA BOCELLI POLAND CONCERT</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,58 +17,74 @@
             box-sizing: border-box;
         }
         .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
         }
         h1 {
             text-align: center;
             color: #333;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
         h2 {
             text-align: center;
-            color: #444;
+            color: #555;
+            font-weight: 500;
+            margin-bottom: 30px;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            position: relative;
         }
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             color: #555;
+            font-weight: 500;
         }
         .form-group input, .form-group select {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
             box-sizing: border-box;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #6a11cb;
+            box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.2);
         }
         .form-group input[type="submit"] {
-            background-color: #5cb85c;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
             color: white;
             border: none;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 15px;
         }
         .form-group input[type="submit"]:hover {
-            background-color: #4cae4c;
-        }
-        .form-row {
-            display: flex;
-            gap: 15px;
-        }
-        .form-row .form-group {
-            flex: 1;
+            opacity: 0.9;
         }
         .info {
-            background-color: #e7f3fe;
-            border-left: 6px solid #2196F3;
-            padding: 10px;
-            margin-bottom: 20px;
+            background-color: rgba(106, 17, 203, 0.1);
+            border-left: 6px solid #6a11cb;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        .info p {
+            margin: 5px 0;
         }
         #ticket {
             margin-top: 20px;
@@ -84,9 +100,29 @@
             display: block;
             margin: 0 auto 20px;
             max-width: 100%;
-            max-height: 150px;
+            max-height: 120px;
             width: auto;
             height: auto;
+        }
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
         }
     </style>
 </head>
