@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDREA BOCELLI POLAND CONCERT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            text-align: center;
+            color: #444;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="submit"] {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .info {
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        #ticket {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #barcode {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 100%;
+            max-height: 150px;
+            width: auto;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="registrationContainer">
+        <img src="logo.jpeg" alt="Concert Logo" class="logo">
+        <h1>ANDREA BOCELLI POLAND CONCERT</h1>
+        <div class="info">
+            <p><strong>Date:</strong> August 14, 2026</p>
+            <p><strong>Time:</strong> 8:00 PM</p>
+            <p><strong>Venue:</strong> Polsat Plus Arena, Gdańsk, Poland 🇵🇱</p>
+        </div>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fanSince">How long have you been a fan?</label>
+                    <input type="text" id="fanSince" name="fanSince" required>
+                </div>
+                <div class="form-group">
+                    <label for="membership">Membership Card No:</label>
+                    <input type="text" id="membership" name="membership">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input type="text" id="country" name="country" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Home/Hotel:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Generate Ticket">
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="ticketContainer" style="display: none;">
+        <img src="logo.jpeg" alt="Concert Logo" class="logo">
+        <h1>ANDREA BOCELLI POLAND CONCERT</h1>
+        <h2>Your Ticket</h2>
+        <div class="info">
+            <p><strong>Date:</strong> August 14, 2026</p>
+            <p><strong>Time:</strong> 8:00 PM</p>
+            <p><strong>Venue:</strong> Polsat Plus Arena, Gdańsk, Poland 🇵🇱</p>
+        </div>
+        <div id="ticket">
+            <p><strong>Ticket ID:</strong> <span id="ticketId"></span></p>
+            <svg id="barcode"></svg>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Generate a unique ticket ID
+            const ticketId = 'BOCELLI-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+
+            // Display the ticket ID
+            document.getElementById('ticketId').innerText = ticketId;
+
+            // Generate barcode
+            JsBarcode("#barcode", ticketId, {
+                format: "CODE128",
+                lineColor: "#000",
+                width: 2,
+                height: 40,
+                displayValue: true
+            });
+
+            // Hide the form and show the ticket
+            document.getElementById('registrationContainer').style.display = 'none';
+            document.getElementById('ticketContainer').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
